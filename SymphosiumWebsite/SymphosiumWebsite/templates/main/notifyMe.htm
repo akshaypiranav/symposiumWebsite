@@ -1,0 +1,26 @@
+{% extends "header.htm" %}
+
+{% block title %}
+Notify Me | Symphos
+{% endblock title %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+
+<section class="container" style="margin-top: 120px;">
+    <h1 class="display-4 text-center fw-bold">NOTIFY ME WHEN EVERY PROGRAMME POSTED</h1>
+    <form action="" method="POST" autocapitalize="off" autocomplete="off" class="mt-5 border border-dark p-4 rounded">
+        {% csrf_token %}
+        <label for="mail" class="fw-bold ms-2">E-Mail</label>
+        <input type="email" name="email" id="mail" placeholder="Enter Your Email To Notify" class="form form-control">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <input type="submit" value="Verify Me" class="btn btn-primary text-white w-25 mt-3">
+            </div>
+        </div>
+
+    </form>
+</section>
+{% include "footer/footer.htm" %}
+
+{% endblock %}

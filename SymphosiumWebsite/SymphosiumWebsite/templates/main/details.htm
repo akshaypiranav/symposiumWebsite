@@ -1,0 +1,62 @@
+{% extends "header.htm" %}
+
+{% block title %}
+Programme Details | Sympos
+
+{% endblock title %}
+{% block content %}
+{% include "navbar/navbar.htm" %}
+{% if data %}
+<section class="container  mt-5">
+    <h1 class="display-4 text-center text-primary fw-bold">{{data.collegeName}}</h1>
+    <h1 class="display-4 text-center text-primary fw-bold">{{data.location}}</h1><hr style="margin-bottom: 50px;">
+</section>
+<div class="justify-content-around row " style="margin-bottom: 100px;">
+    <div class="col-md-8 col-sm-8 col-xs-8 col-lg-8  ">
+        <h1 class="text-center text-primary fw-bold mb-4" style="font-size: 40px;">PROGRAMME DETAILS</h1>
+        <h1 class="lead text-center text-primary fw-bold" >BROUCHURE</h1>
+        <img src="{{data.Brouchure.url}}"  alt="akshay" class="img-fluid text-center rounded  ps-5 pb-3 pe-5">
+        <h1 class="lead text-center text-primary fw-bold">PROGRAMME</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.symName |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">CAPTION</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.Caption |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">DEPARTMENT</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.Department |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">GUESTS</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.guest |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">ABOUT THE PROGRAMME</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.about |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">PROGRAMME TYPE</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.eventType |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">PROGRAMME CATEGORY</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.Category |title}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">REGISTRATION FEE </h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.RegistrationFee}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">REGISTRATION LINK </h1>
+        <h1 class="lead text-center fw-bold mb-4"><a href="{{data.eventLink}}" target="_blank" class="btn btn-primary text-white">Click here </a></h1>
+        <h1 class="lead text-center text-primary fw-bold">LAST DATE OF REGISTRATION </h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.lastDate}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">EVENT START DATE</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.startdate}}</h1>
+        <h1 class="lead text-center text-primary fw-bold">EVENT END DATE</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.enddate}}</h1>
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-4 col-lg-4  " style="margin-top:40px; ">
+        <div class="border border-secondary address " style="border-radius:30px;">
+        <h1 class=" text-center text-primary fw-bold mt-3" style="font-weight: 40px;">ADDRESS</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.about |title}}</h1>
+        <h1 class=" text-center text-primary fw-bold mt-5" style="font-weight: 40px;">WHATSAPP NUMBER</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.chatLink}}</h1>
+        <h1 class=" text-center text-primary fw-bold mt-5" style="font-weight: 40px;">CONTACT DETAILS</h1>
+        <h1 class="lead text-center fw-bold mb-4">{{data.contact}} </h1>
+        <h1 class=" text-center text-primary fw-bold mt-5" style="font-weight: 40px;">MAP LINK</h1>
+        <h1 class="lead text-center fw-bold mb-4"><a href="{{data.locationLink}}" target="_blank" class="btn btn-primary text-white">Map Link</a> </h1>
+    </div>
+
+
+    </div>
+</div>
+{%  endif %}
+{% include "footer/footer.htm" %}
+
+{% endblock %}

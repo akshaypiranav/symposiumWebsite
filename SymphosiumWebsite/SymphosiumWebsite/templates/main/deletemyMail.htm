@@ -1,0 +1,31 @@
+{% extends "header.htm" %}
+
+
+{% block title %}
+Update My Mail | SYMPHOS
+{% endblock title %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+
+<section class="container">
+    <h1 class="display-4 text-center text-bold fw-bold" style="margin-top: 120px;">DELETE MY MAIL</h1>
+    {% if mailData %}
+    <form action="" method="POST" autocapitalize="off" autocomplete="off">
+        {% csrf_token %}
+        <div>
+            <label for="mail" class="ms-2">Your E-Mail</label>
+            <input type="email" value="{{mailData}}" name="mail" id="mail" class="form form-control" placeholder="Enter your E-mail to Delete">
+        </div>
+        <div class="text-center mt-3">
+            <input type="submit" value="Delete My E-mail" class="btn btn-danger text-white">
+        </div>
+
+    </form>
+
+
+    {% endif %}
+</section>
+
+{% include "footer/footer.htm" %}
+{% endblock %}

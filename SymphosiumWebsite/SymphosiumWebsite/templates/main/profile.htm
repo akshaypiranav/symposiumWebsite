@@ -1,0 +1,83 @@
+{% extends "header.htm" %}
+{% block title %}
+College Profile | Sympos
+
+{% endblock title %}
+
+{% block content  %}
+{% include "navbar/navbar.htm" %}
+
+<section class="container" style="margin-top:30px ;">
+    <h1 class="display-4 fw-bold text-center text-primary">{{data.collegeName | title}}</h1>
+    <h4 class="text-center fw-bold text-uppercase">Account Created On : {{data.accountCreated}}</h4>
+<form action="" method="POST" action="{% url 'profile' id=data.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="text-center mb-2">
+        <label for="image">
+        <img src="{{data.collegeImage.url}}" alt="Click to Change"  class="img-fluid text-center my-4 cards" width="400" height="400"></label>
+        <input type="file" name="image" id="image" hidden><br>
+
+    </div>
+
+    <div class="row justify-content-around my-2">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 "><label for="uniqueNumber">Unique Number</label><input type="text" name="uniqueNumber" value="{{data.uniqueNumber}}" id="uniqueNumber" class="form form-control my-2" placeholder="Enter your Unique Number"></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 "><label for="collegeName">College Name</label><input type="text" name="collegeName" value="{{data.collegeName}}" id="collegeName" class="form form-control my-2" placeholder="Enter your College Name"></div>
+    </div>
+    <div class="row justify-content-around my-2">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><label for="collegeMail">College Mail</label><input type="text" value="{{data.collegeEmail}}" name="collegeMail" id="collegeMail" class="form form-control my-2" placeholder="Enter your college Mail Address "></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><label for="contactNumber">Contact Number</label><input type="text" value="{{data.contactNumber}}" name="contactNumber" id="contactNumber" class="form form-control my-2" placeholder="Enter your College Contact Number"></div>
+    </div>
+    <div class="row justify-content-around my-2">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><label for="code">Counselling Code</label><input type="text" value="{{data.counsellingCode}}" name="code" id="code" class="form form-control my-2" placeholder="Enter your college Counselling Code "></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><label for="wcontactNumber">Whatsapp Contact Number</label><input type="text" value="{{data.whatsappContact}}" name="wcontactNumber" id="wcontactNumber" class="form form-control my-2" placeholder="Enter your College Whatsapp Contact Number"></div>
+    </div>
+    <div class="row justify-content-around my-2">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><label for="map">College Map Link</label><input type="text" value="{{data.mapLink}}" name="map" id="map" class="form form-control my-2" placeholder="Enter your college Map Link (Google Map)"></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6"><label for="password">Password</label><input type="text" value="{{data.password}}" name="password" id="password" class="form form-control my-2" placeholder="Enter your Password"></div>
+    </div>
+    <div class="justify-content-center my-2">
+        <label for="Address">College Address</label>
+        <div class="col-12"><textarea name="address" id="" cols="30" rows="3" class="form form-control" placeholder="Enter your College Details">{{data.address}}</textarea></div>
+    </div>
+    <div class="justify-content-center my-2 text-center my-2 row" >
+        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6"><input type="submit" value="Update" class="btn btn-primary my-2 w-50 text-white"></div>
+        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6"><a href="{% url 'clearSession' %}" class="btn btn-danger w-50 text-white">Logout</a></div>
+    </div>
+</form>
+</section>
+<section class="container mt-5">
+    <h1 class="text-center fw-bold text-primary">Uploaded Programmes</h1><hr>
+    {% if uploads %}
+    {% for i in uploads %}
+    <h6 class="ms-2 fw-bold"> Posted On {{i.postedDate}}</h6>
+    <div class="card   border border-dark mb-3" >
+        <div class="card-header fw-bold text-center ">
+          {{i.symName }}
+        </div>
+        <div class="card-body ">
+          <h5 class="card-title ">{{i.collegeName}}</h5>
+          <p class="card-text fw-bold">{{i.Department}}</p>
+          <div class="row justify-content-center">
+            <div class="col-md-6  col-xs-6 col-sm-6 col-lg-6 text-center" >
+                <a href="/update/{{i.id}}" class="btn btn-primary w-50 text-white">Update</a>
+            </div>
+            <div class="col-md-6  col-xs-6 col-sm-6 col-lg-6 text-center" >
+                <a href="/delete/{{i.id}}" class="btn btn-danger w-50 text-white">Delete</a>
+            </div>
+          </div>
+        </div>
+    
+    </div>
+    {% endfor %}
+    {% else %}
+    <h4 class="text-center fw-bold">NO PROGRAMME UPLOADED YET</h4>
+    <div class="row justify-content-center mb-4">
+    <div class="col-md-6  col-xs-6 col-sm-6 col-lg-6 text-center" >
+        <a href="{% url 'add' %}" class="btn btn-primary text-center text-white">Upload Something New</a>
+    </div>
+    </div>
+    {% endif %}
+</section>
+{% include "footer/footer.htm" %}
+
+{% endblock content %}

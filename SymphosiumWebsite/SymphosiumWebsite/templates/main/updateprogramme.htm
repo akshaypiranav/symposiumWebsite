@@ -1,0 +1,129 @@
+{% extends "header.htm" %}
+
+{% block title %}
+Update | Symphos
+{% endblock title %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+{% if data %}
+<div class="container col-sm-6 col-md-6 col-xs-6 col-lg-6 border border-dark rounded " style="margin-top: 20px; margin-bottom: 20px;">
+    <h1 class="display-4 fw-bold text-center my-3 text-primary">UPDATE YOUR PROGRAMME</h1>
+    <form action="" method="POST" autocapitalize="off" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="text-center mb-2">
+    <label for="image">
+        <img src="{{data.Brouchure.url}}" alt="Click to Change"  class="img-fluid text-center my-4 cards" width="400" height="400"></label>
+        <input type="file" name="Brouchure" id="image" hidden><br>
+        </div>
+    <div class="form-group my-2">
+        <label for="uniqueNumber">Unique Number</label>
+        <input type="text" id="uniqueNumber" name="uniqueNumber" class="form form-control my-2" readonly value="{{request.session.uniqueNumber}}" placeholder="Enter Your Unique Number">
+    </div>
+    <div class="form-group my-2">
+        <label for="symName">Programme</label>
+        <input type="text" id="symName" name="symName" value="{{data.symName}}" class="form form-control my-2" placeholder="Name of the Programme">
+    </div>
+    <div class="form-group my-2">
+        <label for="guest">Event Guests</label>
+        <textarea name="guest" id="guest" cols="30" rows="2" class="form form-control my-2" placeholder="Event Guests">{{data.guest}}</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="Caption">Caption</label>
+        <input type="text" id="Caption" name="Caption" value="{{data.Caption}}"  class="form form-control my-2" placeholder="Caption of the Programme">
+    </div>
+    <div class="form-group">
+        <label for="collegeName">College</label>
+        <input type="text" id="collegeName" name="collegeName" value="{{data.collegeName}}"  class="form form-control my-2" placeholder="Name of the College">
+    </div>
+    <div class="form-group">
+        <label for="Department">Department</label>
+        <input type="text" id="Department" name="Department" value="{{data.Department}}"  class="form form-control my-2" placeholder="Name of the Department">
+    </div>
+    <div class="form-group">
+        <label for="RegistrationFee">Registration Fee</label>
+        <input type="number" id="RegistrationFee" name="RegistrationFee" value="{{data.RegistrationFee}}"  class="form form-control my-2" placeholder="Registration Fee">
+    </div>
+
+    <div class="form-group">
+        <label for="startdate">Start Date</label>
+        <input type="text" id="startdate" name="startdate" value="{{data.startdate}}"  class="form form-control my-2" placeholder="Event Start Date">
+    </div>
+    <div class="form-group">
+        <label for="enddate">End Date</label>
+        <input type="text" id="enddate" name="enddate" value="{{data.enddate}}"   class="form form-control my-2" placeholder="Event End Date">
+    </div>
+    <div class="form-group">
+        <label for="lastDate">Last date of Registration</label>
+        <input type="text" id="lastDate" name="lastDate" value="{{data.lastDate}}"   class="form form-control my-2" placeholder="Last Date of Registration">
+    </div>
+
+    <div class="form-group">
+        <label for="eventType">Event Type</label>
+        <select name="eventType" class="form form-control" id="eventType">
+            <option value="" disabled>Select Event Type</option>
+            <option value="Online" {% if data.eventType == 'Online' %}selected{% endif %}>Online</option>
+            <option value="Offline" {% if data.eventType == 'Offline' %}selected{% endif %}>Offline</option>
+        </select>
+        
+    </div>
+    <div class="form-group">
+        <label for="Category">Category</label>
+        <select name="Category" class="form form-control" id="Category">
+            <option value="" disabled>Select Category</option>
+            <option value="Symposium" {% if data.Category == 'Symposium' %}selected{% endif %}>Symposium</option>
+            <option value="Conference" {% if data.Category == 'Conference' %}selected{% endif %}>Conference</option>
+            <option value="Events" {% if data.Category == 'Events' %}selected{% endif %}>Events</option>
+            <option value="Hackathon" {% if data.Category == 'Hackathon' %}selected{% endif %}>Hackathon</option>
+        </select>
+        
+    </div>
+    <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" value="{{data.location}}"  class="form form-control my-2" placeholder="Location">
+    </div>
+    <div class="form-group">
+        <label for="locationLink">Location Link</label>
+        <input type="text" id="locationLink" name="locationLink" value="{{data.locationLink}}" class="form form-control my-2" placeholder="location Link (Google Map Link)">
+    </div>
+    <div class="form-group">
+        <label for="eventLink">Event Link</label>
+        <input type="text" id="eventLink" name="eventLink"  value="{{data.eventLink}}" class="form form-control my-2" placeholder="Event Website Link">
+    </div>
+    <div class="form-group">
+        <label for="chatLink">Whatsapp Number</label>
+        <input type="text" id="eventLink" name="chatLink" value="{{data.chatLink}}"  class="form form-control my-2" placeholder="Whatsapp Number ">
+    </div>
+
+    <div class="form-group">
+        <label for="about">About the Programme</label>
+        <textarea name="about" id="about" cols="30" rows="3" class="form form-control my-2" placeholder="About the Programme">{{data.about}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="contact">Contact Details</label>
+        <textarea name="contact" id="contact" cols="30" rows="2" class="form form-control my-2" placeholder="Contact Details">{{data.contact}}</textarea>
+    </div>
+
+    <div class="justify-content-center text-center mb-3">
+        <div class="" >
+            <input type="submit" value="Update Programme" class="btn btn-primary  text-white w-50">
+        </div>
+    </div>
+
+    </form>
+
+</div>
+{% else %}
+
+<div class="container text-center">
+    <h1 class="text-center fw-bold">NO DATA FOUND REDIRECT</h1>
+    <div class="justify-content-center text-center mb-3">
+        <div class="" >
+            <a href="{% url 'index' %}" class="btn btn-primary text-white">REDIRECT  TO HOME</a>
+        </div>
+    </div></div>
+    {% endif %}
+    {% include "footer/footer.htm" %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "header.htm" %}
+
+{% block title %}
+
+Login | Symphos
+{% endblock %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+<div class="container col-md-6 col-sm-6 col-xs-6 col-lg-6 border border-dark rounded p-4" style="margin-top: 80px;">
+    <h1 class="text-center display-4 fw-bold text-primary">College Login</h1><hr>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group my-3">
+            <label for="uniqueNumber">Unique Number</label>
+            <input type="text" name="uniqueNumber" id="uniqueNumber" class="form form-control" placeholder="Unique Number">
+        </div>
+        <div class="form-group my-3">
+            <label for="Password">Password</label>
+            <input type="password" name="password" id="Password" class="form form-control" placeholder="Enter the Password">
+        </div>
+        <div class="justify-content-center text-center row">
+            <div class="col-md-6  col-xs-6 col-sm-6 col-lg-6" >
+                <input type="submit" value="Login" class="btn btn-primary  text-white w-50">
+            </div>
+            <div class="col-md-6  col-xs-6 col-sm-6 col-lg-6" >
+                <a href="{% url 'register' %}" class="btn btn-primary w-50 text-white">New User?</a>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+{% include "footer/footer.htm" %}
+
+{% endblock %}

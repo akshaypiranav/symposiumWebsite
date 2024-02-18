@@ -1,0 +1,44 @@
+{% extends "header.htm" %}
+
+{% block title %}
+
+Events | Sympos
+{% endblock %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+<section class="container col-12" style="margin-top: 100px; margin-bottom:50px;">
+    <h1 class="display-2 text-center text-primary fw-bold">EVENTS  <i class="fa fa-heart " style="color: red !important;"></i></h1>
+    <p class="text-center fw-bold" style="font-size: 30px;">
+    Time's chapters unfold, events as narratives etch the tapestry of experience. From joyous celebrations to resilience-testing challenges, life's mosaic thrives.
+</p>
+    </div>
+</section>
+
+<section class="container">
+    <h1 class="display-4 fw-bold text-primary text-center" >UPCOMING EVENTS</h1><hr style="margin-bottom: 60px;">
+    {% if data %}
+      {% for i in data %}
+      <div class="justify-content-around row">
+          <div class="card my-3 cards" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title text-center fw-bold">{{i.symName | upper}}</h5>
+                <h6 class=" text-center">{{i.Caption | title}}</h6>
+                <p class="card-text text-center fw-bold">{{i.collegeName | title}}</p>
+                <p class=" text-center fw-bold " style="font-size: 14px;">{{i.location | upper}}</p>
+                <div class="justify-content-center text-center">
+              <div class="" ><a href="details/{{i.id}}" class="btn text-white btn-primary text-center">Detailed Info <i class="fa fa-arrow-right text-white" aria-hidden="true"></i></a>
+              </div>
+              </div>
+            </div>
+            </div>
+        {% endfor %}
+    {% else %}
+      <p class="text-center fw-bold" style="font-size: 30px;">
+        Unfortunately No Events Found
+      </p>
+    {% endif %}
+</section>
+{% include "footer/footer.htm" %}
+
+{% endblock %}

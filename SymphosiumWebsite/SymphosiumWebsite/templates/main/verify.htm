@@ -1,0 +1,24 @@
+{% extends "header.htm" %}
+
+{% block title %}
+Verify Me | Symphos
+{% endblock title %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+
+<section class="container col-md-6 col-sm-6 col-xs-6 col-lg-6">
+    <h1 class="display-4 text-center fw-bold" style="margin-top: 140px;">ENTER THE OTP</h1>
+    <form action="" method="POST" autocapitalize="off"  autocomplete="off">
+        {% csrf_token %}
+        <div><label for="OTP" class="ms-2">OTP</label>
+        <input type="number" name="otp" id="OTP" placeholder="Enter the One Time Password" class="form form-control ">
+        </div>
+        <div class="text-center mt-3">
+            <input type="submit" value="Verify" class="btn btn-primary w-25 text-white" >
+        </div>
+        
+    </form>
+</section>
+{% include "footer/footer.htm" %}
+{% endblock %}

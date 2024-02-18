@@ -1,0 +1,88 @@
+{% extends "header.htm" %}
+
+{% block title %}
+
+Home | Sympos
+{% endblock %}
+
+{% block content %}
+{% include "navbar/navbar.htm" %}
+<section class="container col-12 " style="margin-top: 200px;" >
+    <h1 class="text-center display-1 fw-bold text-primary" id="top">SYMPHOS</h1>
+    <p class="text-center fw-bold " style="font-size:50px ;">Find the List of Programme happening all across India <i class="fa fa-heart " style="color: red !important;"></i></p>
+</section>
+<section class="container col-12" style="margin-top: 300px;">
+    <h1 class="display-2 text-center text-primary fw-bold">SYMPHOSIUM</h1>
+    <p class="text-center " style="font-size: 30px;">The collegiate symposium weaves a vibrant tapestry of diverse ideas, a masterpiece of shared knowledge. Minds, like artists, contribute to an intellectual ballad, harmonizing curiosity and insight. Each word becomes a brushstroke, painting a portrait of collective enlightenment—a testament to the relentless pursuit of knowledge.</p>
+    <div class="row form-group  justify-content-center text-center">
+        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 my-2 " ><a href="{% url 'symphosium' %}" class="btn text-white btn-primary text-center">Explore Symphosium <i class="fa fa-arrow-right text-white" aria-hidden="true"></i>
+        </a></div>
+
+    </div>
+</section>
+
+
+<section class="container col-12" style="margin-top: 200px;">
+    <h1 class="display-2 text-center text-primary fw-bold">Conference</h1>
+    <p class="text-center " style="font-size: 30px;">A conference, a nexus of minds, orchestrates an intellectual dance where diverse voices forge bridges of collaboration. Attendees, beacons of insight, contribute to the collective enlightenment—a symphony of expertise and perspectives. This temporal hub propels the frontier of knowledge, epitomizing the dynamic pulse of evolving ideas.</p>
+    <div class="row form-group  justify-content-center text-center">
+        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 my-2 " ><a href="{% url 'conference' %}" class="btn text-white btn-primary text-center">Explore Conference <i class="fa fa-arrow-right text-white" aria-hidden="true"></i>
+        </a></div>
+
+    </div>
+</section>
+
+
+<section class="container col-12" style="margin-top: 200px;">
+    <h1 class="display-2 text-center text-primary fw-bold">Events</h1>
+    <p class="text-center " style="font-size: 30px;">
+        
+        Events, like chapters in life's book, etch narratives in the tapestry of experience, marking milestones and shaping stories. From joyous celebrations to resilience-testing challenges, they weave threads of memory into a mosaic of emotions, echoing human connection and leaving indelible imprints on the canvas of time.
+</p>
+    <div class="row form-group  justify-content-center text-center">
+        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 my-2 " ><a href="{% url 'events' %}" class="btn text-white btn-primary text-center">Explore Events <i class="fa fa-arrow-right text-white" aria-hidden="true"></i>
+        </a></div>
+
+    </div>
+</section>
+
+
+<section class="container col-12" style="margin-top: 200px;">
+    <h1 class="display-2 text-center text-primary fw-bold">Hackathon</h1>
+    <p class="text-center " style="font-size: 30px;">
+        A Hackathon, a burst of creativity, converges diverse talents in a coding crucible, sparking solutions. Teams, armed with laptops, navigate a problem-solving marathon in a dynamic cauldron where technology fuses with imagination. It's a symphony of code, an intellectual sprint fostering camaraderie and birthing transformative prototypes.</p>
+    <div class="row form-group  justify-content-center text-center">
+        <div class="col-md-5 col-xs-5 col-lg-5 col-sm-5 my-2 " ><a href="{% url 'events' %}" class="btn text-white btn-primary text-center">Explore Hackathons <i class="fa fa-arrow-right text-white" aria-hidden="true"></i>
+        </a></div>
+    </div>
+</section>
+<section class="container border border-secondary p-5 " style="margin-top: 120px; margin-bottom:100px; border-radius:30px">
+<form action="" method="POST" autocapitalize="off" >
+    {% csrf_token %}
+    <h1 class="text-center text-primary display-4 fw-bold" id="contact">CONTACT SYMPHOS</h1>
+    <div class="justify-content-around row my-2">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 my-2" ><label for="firstname ms-3">First Name</label><input  type="text" name="firstname" id="firstname" placeholder="Enter your First Name" class="form form-control"></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 my-2" ><label for="lastname">Last Name</label><input type="text" name="lastname" id="lastname" class="form form-control" placeholder="Enter your Last Name"></div>
+    </div>
+    <div class="justify-content-around row my-2">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 my-2" ><label for="email">E-Mail</label><input type="email" name="email" id="email" placeholder="Enter your E-mail" class="form form-control"></div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 my-2" ><label for="mobile">Contact Number</label><input type="number" name="mobile" id="mobile" class="form form-control" placeholder="Enter your Contact Number"></div>
+    </div>
+    <div class="justify-content-around row my-2">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 my-2" ><label for="message">Message</label><textarea placeholder="Enter the Message" name="message" id="message" cols="30" rows="5" class="form form-control"></textarea></div>
+    </div>
+    <div class="justify-content-center row my-2 text-center">
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 "><input type="submit" value="Contact Us" class="btn btn-primary  w-50 text-white"></div>
+    </div>
+
+</form>
+</section>
+<section class="container">
+    <h1 class="text-center text-primary display-4 fw-bold" id="contact">OUR LOCATION</h1>
+
+    <iframe class="w-100 border border-dark" style="border-radius: 30px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243646.9050970772!2d78.24323223000583!3d17.412608641550747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1707739344170!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+<a href="#top" class="btn btn-primary rounded text-white" id="btnn">ChatBot <i class="fa fa-comment text-white" aria-hidden="true"></i> 
+ </a>
+{% include "footer/footer.htm" %}
+{% endblock %}
